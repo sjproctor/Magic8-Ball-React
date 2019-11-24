@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      answerArray: ["Holy Smokes!", "No way, Jose", "Sure, why not?", "Yeah, Imma say no", "Umm.. seriously?", "Yaaaas girl", "If you say so"],
+      answerArray: ["Holy Smokes!", "No way, Jose", "Sure, why not?", "Yeah, Imma say no", "Seriously?", "Yaaaas girl", "If you say so", "Hmmm...", "Atta kid", "Not a chance", "Oh please", "Wanna try that again?"],
       answer: null,
       question: ""
     }
