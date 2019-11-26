@@ -2,12 +2,13 @@ import React from 'react';
 import './App.css'
 
 class App extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(){
+    super()
     this.state = {
-      answerArray: ["Holy Smokes!", "No way, Jose", "Sure, why not?", "Yeah, Imma say no", "Seriously?", "Yaaaas girl", "If you say so", "Hmmm...", "Atta kid", "Not a chance", "Oh please", "Wanna try that again?"],
+      answerArray: ["Holy Smokes!", "No way, Jose", "Sure, why not?", "Yeah, Imma say no", "Seriously?", "Yaaaas girl", "If you say so", "Hmmm...", "Atta kid", "Not a chance", "Oh please", "Wanna try that again?", "Yes! A thousand times yes!"],
       answer: null,
-      question: ""
+      question: "",
+      isShaking: false
     }
   }
 
@@ -19,13 +20,12 @@ class App extends React.Component {
     return answerArray[randomNumber]
   }
 
-
   handleChange = (e) => {
     // gets the event from the input on change and updates state
     this.setState({question: e.target.value})
   }
 
-  handleSubmit = () =>{
+  handleSubmit = () => {
     // destructures question out of state
     const { question } = this.state
     // checks to see if there is a question in the input
@@ -33,8 +33,20 @@ class App extends React.Component {
       // calls the getAnswer function and saves the outcome as answer
       const answer = this.getAnswer()
       // sets state as the outcome to the getAnswer function in all uppercase for Magic8 Ball styling
-      this.setState({answer: answer.toUpperCase()})
+      this.setState({isShaking: true})
+      setTimeout(() => {
+        this.setState({answer: answer.toUpperCase()})
+      }, 1500)
     }
+  }
+
+  restartClick = () => {
+    // need "value={this.state.question}" in the form to clear the form when resetting state
+    this.setState({
+      answer: null,
+      question: "",
+      isShaking: false
+    })
   }
 
   render(){
@@ -44,8 +56,14 @@ class App extends React.Component {
         <input
           id="inputBox"
           type='text'
+          value={this.state.question}
           onChange={this.handleChange}
         />
+        <button
+          onClick={this.restartClick}
+        >
+        Clear
+        </button>
         <br />
         <button
           id="submitButton"
@@ -53,7 +71,10 @@ class App extends React.Component {
         >
           Ask the Magic 8 Ball a Question
         </button>
-        <div id="eightBall">
+        <div
+          id="eightBall"
+          className={`${this.state.isShaking === false ? "" : "shaking"}`}
+        >
           <div id="eight">8</div>
 
           {this.state.answer &&
