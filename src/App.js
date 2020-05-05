@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 import './App.css'
 
 class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      answerArray: ["Holy Smokes!", "No way, Jose", "Sure, why not?", "Yeah, Imma say no", "Seriously?", "Yaaaas girl", "If you say so", "Hmmm...", "Atta kid", "Not a chance", "Oh please", "Wanna try that again?", "Yes! A thousand times yes!"],
+      answerArray: ["Holy Smokes!", "No way, Jose", "AS IF!", "Yeah, Imma say no", "Seriously?", "Yaaaas girl", "If you say so", "Hmmm...", "Atta kid", "Not a chance", "Oh please", "Wanna try that again?", "Yes! A thousand times yes!"],
       answer: null,
       question: "",
       isShaking: false
@@ -22,7 +22,7 @@ class App extends React.Component {
 
   handleChange = (e) => {
     // gets the event from the input on change and updates state
-    this.setState({question: e.target.value})
+    this.setState({ question: e.target.value })
   }
 
   handleSubmit = () => {
@@ -33,9 +33,9 @@ class App extends React.Component {
       // calls the getAnswer function and saves the outcome as answer
       const answer = this.getAnswer()
       // sets state as the outcome to the getAnswer function in all uppercase for Magic8 Ball styling
-      this.setState({isShaking: true})
+      this.setState({ isShaking: true })
       setTimeout(() => {
-        this.setState({answer: answer.toUpperCase()})
+        this.setState({ answer: answer.toUpperCase() })
       }, 1500)
     }
   }
@@ -56,18 +56,18 @@ class App extends React.Component {
         <input
           id="inputBox"
           type='text'
-          value={this.state.question}
-          onChange={this.handleChange}
+          value={ this.state.question }
+          onChange={ this.handleChange }
         />
         <button
-          onClick={this.restartClick}
+          onClick={ this.restartClick }
         >
         Clear
         </button>
         <br />
         <button
           id="submitButton"
-          onClick={this.handleSubmit}
+          onClick={ this.handleSubmit }
         >
           Ask the Magic 8 Ball a Question
         </button>
@@ -77,8 +77,8 @@ class App extends React.Component {
         >
           <div id="eight">8</div>
 
-          {this.state.answer &&
-            <p id="answer"> {this.state.answer} </p>
+          { this.state.answer &&
+            <p id="answer"> { this.state.answer } </p>
           }
 
         </div>
@@ -87,4 +87,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default App
