@@ -1,3 +1,3 @@
 # Magic 8 Ball
 
-Challenge for LEARN Academy students using a template to create a basic React project
+First React challenge for LEARN Academy students using a [template](https://github.com/LEARNAcademy/Challenge-Magic8-Ball-React)
